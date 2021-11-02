@@ -193,7 +193,7 @@ nodo_abb_t* buscar_predecesor_inorden(nodo_abb_t* actual){
  * PRE: Recibe el nodo_a_eliminar y su nodo_padre.
  * POST: Asigna los nodos como correspondan según el caso.
  */ 
-void borrar_nodo_con_dos_hijos(abb_t* arbol, nodo_abb_t* nodo_padre, nodo_abb_t* nodo_a_eliminar, void* elemento){
+void borrar_nodo_con_dos_hijos(abb_t* arbol, nodo_abb_t* nodo_padre, nodo_abb_t* nodo_a_eliminar){
   
   nodo_abb_t* reemplazante = buscar_predecesor_inorden(nodo_a_eliminar->izquierda);
   nodo_abb_t* padre_reemplazante = buscar_nodo_padre(arbol, arbol->nodo_raiz, NULL, reemplazante->elemento);
@@ -244,7 +244,7 @@ void* borrar_nodo(abb_t* arbol, void* elemento){
     borrar_nodo_con_un_hijo(arbol, nodo_padre, nodo_a_eliminar, elemento);
   }
   else{
-    borrar_nodo_con_dos_hijos(arbol, nodo_padre, nodo_a_eliminar, elemento);
+    borrar_nodo_con_dos_hijos(arbol, nodo_padre, nodo_a_eliminar);
   }
 
   free(nodo_a_eliminar);
